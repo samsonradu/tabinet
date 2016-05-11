@@ -21,6 +21,10 @@ class Player extends EventEmitter {
 		socket.on('confirm', (function(proposal){
 			this.confirm(proposal);
 		}).bind(this));
+
+		socket.on('reject', (function(proposal){
+			this.reject(proposal);
+		}).bind(this));
 		
 		this.hand = [];
 		
@@ -28,8 +32,15 @@ class Player extends EventEmitter {
 	}
 
 	getPoints(){
-		//TODO
-		return 0;
+        return this.stack.reduce(function(prev, current, index){
+            let points = 0;
+            if (current === "2S" || current === "TD")
+                points = 2;
+            else if (["T", "J", "Q", "K", "A"].indexOf(current.charAt(0)) !== -1)  
+                points = 1;
+            
+            return prev + points;
+        }, 0);
 	}
 
 	//take 0 or more table cards with a card from hand

@@ -12,19 +12,16 @@ class Tabi {
 
         this.table = [];
 
+        this.log = [];
+
         this.deck = [];
 
-        this.proposal = [];
+        this.proposal = [null, []];
 
         var self = this;
         setInterval(function(){
             self.print();
         }, 10000);
-
-        setInterval(function(){
-            self.update();
-        }, 1000);
-
     }
 
     deal(){
@@ -36,6 +33,7 @@ class Tabi {
             this.players[0].hand = h1;
             this.players[1].hand = h2;
             this.table = table;
+            this.update();
         }
 
         else if (this.deck.length > 12){
@@ -44,6 +42,7 @@ class Tabi {
 
             this.players[0].hand = h1;
             this.players[1].hand = h2;
+            this.update();
         }
         else {
             console.info("No more cards to deal!");
@@ -64,6 +63,13 @@ class Tabi {
             this.confirm(player, data);
         }).bind(this));
 
+        player.on('reject', (function(data){
+            this.reject(player, data);
+        }).bind(this));
+
+        this.log.push("Added player");
+
+        this.update();
         if (this.players.length === 2){
             this.players[0].isCurrent = 1;
             this.run();
@@ -78,8 +84,10 @@ class Tabi {
         }
 
         console.log("Player " + player.name + " gives " + card + " takes: " + tableCards.toString());
+        this.log.push("Player " + player.name + " plays " + card);
  
         this.proposal = [card, tableCards];
+        this.update();
     }
 
     confirm(player, proposal){
@@ -88,19 +96,32 @@ class Tabi {
         let otherPlayer = this.players[0].name === player.name ? this.players[1] : this.players[0];
 
         //filter from opponent's hand
-        otherPlayer.hand = player.hand.filter((x) => x !== card);
+        otherPlayer.hand = otherPlayer.hand.filter((x) => x !== card);
 
         if (tableCards.length === 0)
             //lay on the table
             this.table.push(card);
-        else
+        else {
             //filter from table
             this.table = this.table.filter((x) => tableCards.indexOf(x) === -1);
+            otherPlayer.stack.push(card);
+            otherPlayer.stack = otherPlayer.stack.concat(tableCards);
+        }
+            
 
-        this.proposal = [];
+        this.proposal = [null, []];
+        this.log.push("Player " + player.name + " confirms " + card);
 
         player.isCurrent = true;
         otherPlayer.isCurrent = false;
+        this.update();
+    }
+
+    reject(player, proposal){
+        console.log("rejecting");
+        console.log(this.proposal);
+        this.proposal = [null, []]; //try again
+        this.update();
     }
 
     print(){
@@ -122,6 +143,8 @@ class Tabi {
             player.socket.emit('data', {
                 turn: player.isCurrent,
                 hand: player.hand,
+                points: player.getPoints(),
+                log: self.log,
                 table: self.table,
                 stack: player.stack,
                 proposal: self.proposal
@@ -148,6 +171,7 @@ class Tabi {
         this.players.map(function(player){
             player.hand = [];
         });
+        this.update();
 
         clearInterval(this.runner);
 
