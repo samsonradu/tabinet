@@ -83,8 +83,8 @@ class Tabi {
             return;
         }
 
-        console.log("Player " + player.name + " gives " + card + " takes: " + tableCards.toString());
-        this.log.push("Player " + player.name + " plays " + card);
+        console.log(player.name + " gives " + card + " takes: " + tableCards.toString());
+        this.log.push(player.name + " plays " + card);
  
         this.proposal = [card, tableCards];
         this.update();
@@ -108,7 +108,6 @@ class Tabi {
             otherPlayer.stack = otherPlayer.stack.concat(tableCards);
         }
             
-
         this.proposal = [null, []];
         this.log.push("Player " + player.name + " confirms " + card);
 
@@ -137,8 +136,6 @@ class Tabi {
 
     update(){
         var self = this;
-        if (this.players.length !== 2)
-            return;
         this.players.map(function(player){
             player.socket.emit('data', {
                 turn: player.isCurrent,
@@ -147,6 +144,15 @@ class Tabi {
                 log: self.log,
                 table: self.table,
                 stack: player.stack,
+                players: self.players.map(function(p){
+                    return {
+                        id: player.socket.id,
+                        isOpponent: (p.socket.id !== player.socket.id),
+                        name: p.name,
+                        stack: p.stack.length,
+                        hand: p.hand.length
+                    }
+                }),
                 proposal: self.proposal
             });
         });
