@@ -85,7 +85,7 @@ class Tabi {
 
         console.log(player.name + " gives " + card + " takes: " + tableCards.toString());
         this.log.push(player.name + " plays " + card);
- 
+        
         this.proposal = [card, tableCards];
         this.update();
     }
@@ -100,14 +100,14 @@ class Tabi {
 
         if (tableCards.length === 0)
             //lay on the table
-            this.table.push(card);
+        this.table.push(card);
         else {
             //filter from table
             this.table = this.table.filter((x) => tableCards.indexOf(x) === -1);
             otherPlayer.stack.push(card);
             otherPlayer.stack = otherPlayer.stack.concat(tableCards);
         }
-            
+        
         this.proposal = [null, []];
         this.log.push("Player " + player.name + " confirms " + card);
 

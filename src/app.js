@@ -9,32 +9,32 @@ var io = require('socket.io')(http);
 var path = require('path');
 
 app.get('/', function(req, res){
-  res.sendFile(path.join(__dirname + '/../html/index.html'));
+	res.sendFile(path.join(__dirname + '/../html/index.html'));
 });
 
 app.get('/js/app.jsx', function(req, res){
-  res.sendFile(path.join(__dirname + '/../html/js/app.jsx'));
+	res.sendFile(path.join(__dirname + '/../html/js/app.jsx'));
 });
 
 io.on('connection', function(socket){
-  socket.on('join', function(data){
-  	let name = data.name;
-  	console.log(name + ' joined');
-  	var p = new Player(data.name, socket);
-    t.add(p);
-  });
-  socket.on('disconnect', function(){
-    console.log('a user disconnected');
-  	for (let i = 0; i < t.players.length; i++){
-  		if (socket.id === t.players[i].socket.id)
-  			t.players.splice(i, 1);
-  	}
-    console.log("Players left: " + t.players.length);
-  });
+	socket.on('join', function(data){
+		let name = data.name;
+		console.log(name + ' joined');
+		var p = new Player(data.name, socket);
+		t.add(p);
+	});
+	socket.on('disconnect', function(){
+		console.log('a user disconnected');
+		for (let i = 0; i < t.players.length; i++){
+			if (socket.id === t.players[i].socket.id)
+				t.players.splice(i, 1);
+		}
+		console.log("Players left: " + t.players.length);
+	});
 });
 
 http.listen(3000, function(){
-  console.log('listening on *:3000');
+	console.log('listening on *:3000');
 });
 
 
