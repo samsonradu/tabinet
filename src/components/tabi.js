@@ -204,6 +204,7 @@ class Tabi {
         var cards = require("./deck.js");
         this.deck = shuffle(cards.slice(0));
         this.table = [];
+        this.proposal = [null, []];
 
         let self = this;  
         this.players.map(function(player){

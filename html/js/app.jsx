@@ -230,7 +230,9 @@ var Log = React.createClass({
 		});
 		return (
 			<div className="log">
-				{log}
+				<div className="messages">
+					{log}
+				</div>
 				<br/>
 				<input placeholder="chat here .. " ref="chat" className="form-control" onKeyPress={this.sendMessage}/>
 			</div>
