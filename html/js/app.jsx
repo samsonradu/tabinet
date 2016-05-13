@@ -20,6 +20,7 @@ var Game = React.createClass({
 		this.socket = io();
 		s = this.socket;
 		this.socket.on('data', function (data) {
+			console.log(data);
 			self.setState(data);
 		});
 	},
@@ -218,7 +219,7 @@ var Log = React.createClass({
 			<div className="log">
 				{log}
 				<br/>
-				<input ref="chat" className="form-control" onKeyPress={this.sendMessage}/>
+				<input placeholder="chat here .. " ref="chat" className="form-control" onKeyPress={this.sendMessage}/>
 			</div>
 		)
 	},

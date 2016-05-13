@@ -51,6 +51,13 @@ class Tabi {
         return true;
     }
 
+    remove(socket){
+        this.players = this.players.filter(function(p){
+            return socket.id !== p.socket.id;
+        });
+        this.update();
+    }
+
     add(player){
         this.players.push(player);
         player.on('take', (function(data){
@@ -119,7 +126,6 @@ class Tabi {
     }
 
     reject(player, proposal){
-        console.log("rejecting");
         console.log(this.proposal);
         this.proposal = [null, []]; //try again
         this.update();
@@ -139,7 +145,7 @@ class Tabi {
     update(){
         var self = this;
         this.players.map(function(player){
-            player.socket.emit('data', {
+            let data = {
                 turn: player.isCurrent,
                 hand: player.hand,
                 points: player.getPoints(),
@@ -148,7 +154,7 @@ class Tabi {
                 stack: player.stack,
                 players: self.players.map(function(p){
                     return {
-                        id: player.socket.id,
+                        id: p.socket.id,
                         isOpponent: (p.socket.id !== player.socket.id),
                         name: p.name,
                         stack: p.stack.length,
@@ -156,7 +162,8 @@ class Tabi {
                     }
                 }),
                 proposal: self.proposal
-            });
+            };
+            player.socket.emit('data', data);
         });
     }
 

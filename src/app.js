@@ -19,12 +19,7 @@ io.on('connection', function(socket){
 		t.add(p);
 	});
 	socket.on('disconnect', function(){
-		console.log('a user disconnected');
-		for (let i = 0; i < t.players.length; i++){
-			if (socket.id === t.players[i].socket.id)
-				t.players.splice(i, 1);
-		}
-		console.log("Players left: " + t.players.length);
+		t.remove(socket);
 	});
 });
 
