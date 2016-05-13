@@ -125,16 +125,12 @@ var Game = React.createClass({
 						</div>
 						<div className="col-md-3">
 							<Log callback={this.sendMessage} data={this.state.log}/>
-						</div>
-					</div>
-					<br/>
-					<div class="row">
-						<div className="col-md-4 col-md-offset-4">
 							<div class="stats">
+								<br/>
 								<div>Points: {this.state.points} ({this.state.extraPoints})</div>
 								<div className="stack">Stack: {this.state.stack.length}</div>
 							</div>
-						</div>      
+						</div>
 					</div>
 				</div>
 			);
