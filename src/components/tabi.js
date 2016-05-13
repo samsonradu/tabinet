@@ -51,7 +51,7 @@ class Tabi {
             this.update();
         }
 
-        else if (this.deck.length > 12){
+        else if (this.deck.length >= 12){
             let h1 = this.deck.splice(0, 6);
             let h2 = this.deck.splice(0, 6);
 
