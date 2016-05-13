@@ -38,7 +38,7 @@ class Player extends EventEmitter {
 	getPoints(){
 		return this.stack.reduce(function(prev, current, index){
 			let points = 0;
-			if (current === "2S" || current === "TD")
+			if (current === "2C" || current === "TD")
 				points = 2;
 			else if (["T", "J", "Q", "K", "A"].indexOf(current.charAt(0)) !== -1)  
 				points = 1;

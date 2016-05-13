@@ -3,18 +3,13 @@
 let Tabi = require("./components/tabi.js");
 let Player = require("./components/player.js");
 
+var express = require('express');
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
 
-app.get('/', function(req, res){
-	res.sendFile(path.join(__dirname + '/../html/index.html'));
-});
-
-app.get('/js/app.jsx', function(req, res){
-	res.sendFile(path.join(__dirname + '/../html/js/app.jsx'));
-});
+app.use(express.static('html'));
 
 io.on('connection', function(socket){
 	socket.on('join', function(data){

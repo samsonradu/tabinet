@@ -13,37 +13,40 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <style>
         .card {
-            display: inline-block; margin:5px; height:70px; width: 50px; line-height: 20px; border: 1px solid #ddd; font-weight: bold; background-color: white;
+            display: inline-block; margin:5px; width: 70px; line-height: 20px; border: 1px solid #ddd; font-weight: bold; background-color: white; cursor: pointer;
         }
         .card:hover {
-          background-color: #F0F0F0;
-          text-decoration: none;
+            background-color: #F0F0F0;
+            text-decoration: none;
         }
         .card.selected {
-            margin-bottom: 10px;
+            opacity: 0.6;
             background-color: #D0D0D0;
         }
+        .card img {
+            width: 70px;
+        }
         div.message {
-          border: none;
-          border-bottom: 1px solid #D0D0D0;
-          box-shadow: none;
+            border: none;
+            border-bottom: 1px solid #D0D0D0;
+            box-shadow: none;
         }
         div.table {
-          background-color: #469A20;
-          padding: 10px;
-          border: 15px solid #907B68;
+            background-color: #469A20;
+            padding: 10px;
+            border: 15px solid #907B68;
         }
         div.proposal {
-          background-color: #F9F9F9;
-          border: 5px solid #907B68;
-          padding: 10px;
-          height: 200px;
+            background-color: #F9F9F9;
+            border: 5px solid #907B68;
+            padding: 10px;
+            height: 200px;
         }
         div.buttons {
-          margin-top:10px;
+            margin-top:10px;
         }
         .label-turn {
-          float:right;
+            float:right;
         }
     </style>
   </head>
