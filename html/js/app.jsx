@@ -6,6 +6,7 @@ var Game = React.createClass({
 		return {
 			turn: false,
 			points: 0,
+			extraPoints: 0,
 			deck: 0,
 			hand: [],
 			table: [],
@@ -130,7 +131,7 @@ var Game = React.createClass({
 					<div class="row">
 						<div className="col-md-4 col-md-offset-4">
 							<div class="stats">
-								<div>Points: {this.state.points}</div>
+								<div>Points: {this.state.points} ({this.state.extraPoints})</div>
 								<div className="stack">Stack: {this.state.stack.length}</div>
 							</div>
 						</div>      

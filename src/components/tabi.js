@@ -134,6 +134,9 @@ class Tabi {
         else {
             //filter from table
             this.table = this.table.filter((x) => tableCards.indexOf(x) === -1);
+            if (this.table.length ===0)
+                //add one extra point to the user
+                otherPlayer.extraPoints ++;
             otherPlayer.stack.push(card);
             otherPlayer.stack = otherPlayer.stack.concat(tableCards);
         }
@@ -170,6 +173,7 @@ class Tabi {
                 turn: player.isCurrent,
                 hand: player.hand,
                 points: player.getPoints(),
+                extraPoints: player.extraPoints,
                 log: self.log,
                 table: self.table,
                 stack: player.stack,
@@ -210,6 +214,7 @@ class Tabi {
         this.players.map(function(player){
             player.hand = [];
             player.acceptFlag = null;
+            player.extraPoints = 0;
         });
         this.update();
 

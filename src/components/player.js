@@ -43,10 +43,12 @@ class Player extends EventEmitter {
 		this.hand = [];
 		
 		this.stack = [];
+
+		this.extraPoints = 0; //also known as "table"
 	}
 
 	getPoints(){
-		return this.stack.reduce(function(prev, current, index){
+		return this.extraPoints + this.stack.reduce(function(prev, current, index){
 			let points = 0;
 			if (current === "2C" || current === "TD")
 				points = 2;
