@@ -6,6 +6,7 @@ var Game = React.createClass({
 		return {
 			turn: false,
 			points: 0,
+			deck: 0,
 			hand: [],
 			table: [],
 			log: [],
@@ -49,6 +50,18 @@ var Game = React.createClass({
 		if (this.state.turn || !this.state.proposal[0])
 			return false;
 		this.socket.emit('reject', proposal);
+	},
+
+	accept: function(){
+		if (!this.state.turn)
+			return false;
+		this.socket.emit('accept');
+	},
+
+	refuse: function(){
+		if (!this.state.turn)
+			return false;
+		this.socket.emit('refuse');
 	},
 
 	selectHand: function(card){
@@ -107,7 +120,7 @@ var Game = React.createClass({
 						</div>
 						<div className="col-md-3">
 							<Proposal data={this.state.proposal} />
-							<Controls confirm={this.confirm} reject={this.reject} play={this.play} proposal={this.state.proposal} turn={this.state.turn} />
+							<Controls deck={this.state.deck} accept={this.accept} refuse={this.refuse} confirm={this.confirm} reject={this.reject} play={this.play} proposal={this.state.proposal} turn={this.state.turn} />
 						</div>
 						<div className="col-md-3">
 							<Log callback={this.sendMessage} data={this.state.log}/>
@@ -236,7 +249,16 @@ var Log = React.createClass({
 var Controls = React.createClass({
 	render: function(){
 		let buttons = []
-		if (this.props.proposal[0]){
+		if (this.props.deck === 48 && this.props.turn){
+			buttons.push(
+				<a onClick={() => this.props.accept()} href="#" className="btn btn-primary">accept</a>
+			)
+			buttons.push(
+				<a onClick={() => this.props.refuse()} href="#" className="btn btn-danger">refuse</a>
+			);
+		}
+
+		else if (this.props.proposal[0]){
 			if (this.props.turn)
 				buttons.push(
 					<a onClick={() => this.props.play(this.props.proposal)} href="#" className="btn btn-primary">play</a>

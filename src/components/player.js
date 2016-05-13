@@ -8,6 +8,8 @@ class Player extends EventEmitter {
 
 		this.name = name;
 
+		this.acceptFlag = null; //accept first 4 cards
+
 		this.socket = socket;
 
 		this.isCurrent = false;
@@ -28,6 +30,14 @@ class Player extends EventEmitter {
 
 		socket.on('reject', (function(proposal){
 			this.reject(proposal);
+		}).bind(this));
+
+		socket.on('accept', (function(){
+			this.accept();
+		}).bind(this));
+
+		socket.on('refuse', (function(){
+			this.refuse();
 		}).bind(this));
 		
 		this.hand = [];
@@ -54,6 +64,20 @@ class Player extends EventEmitter {
 
 	confirm(proposal){
 		this.emit('confirm', proposal);
+	}
+
+	reject(proposal){
+		this.emit('reject', proposal);
+	}
+
+	accept(){
+		this.acceptFlag = true;
+		this.emit('accept');
+	}
+
+	refuse(){
+		this.acceptFlag = false;
+		this.emit('refuse');
 	}
 
 	message(data){

@@ -26,13 +26,28 @@ class Tabi {
 
     deal(){
         if (this.deck.length === 52){
-            let table = this.deck.splice(0, 4);
-            let h1 = this.deck.splice(0, 6);
-            let h2 = this.deck.splice(0, 6);
-
+            let h1 = this.deck.splice(0, 4);
             this.players[0].hand = h1;
-            this.players[1].hand = h2;
-            this.table = table;
+            this.update();
+        }
+        else if (this.deck.length === 48){
+            if (this.players[0].acceptFlag === true){
+                let h1 = this.deck.splice(0, 2);
+                let h2 = this.deck.splice(0, 6);
+                let table = this.deck.splice(0, 4);
+                this.players[0].hand = this.players[0].hand.concat(h1);
+                this.players[1].hand = h2;
+                this.table = table;
+            }
+            else {
+                let table = this.players[0].hand;
+                let h1 = this.deck.splice(0, 6);
+                let h2 = this.deck.splice(0, 6);
+                this.players[0].hand = h1;
+                this.players[1].hand = h2;
+                this.table = table;
+            }
+
             this.update();
         }
 
@@ -76,9 +91,15 @@ class Tabi {
 
         player.on('message', (function(data){
             this.log.push(player.name + ": " + data.text);
-            console.log(this.log);
             this.update();
         }).bind(this));
+
+        player.on('accept', function(){
+            player.acceptFlag = true;
+        })
+        player.on('reject', function(){
+            player.acceptFlag = false;
+        })
 
         this.update();
         if (this.players.length === 2){
@@ -152,6 +173,7 @@ class Tabi {
                 log: self.log,
                 table: self.table,
                 stack: player.stack,
+                deck: self.deck.length,
                 players: self.players.map(function(p){
                     return {
                         id: p.socket.id,
@@ -181,10 +203,12 @@ class Tabi {
 
         var cards = require("./deck.js");
         this.deck = shuffle(cards.slice(0));
+        this.table = [];
 
         let self = this;  
         this.players.map(function(player){
             player.hand = [];
+            player.acceptFlag = null;
         });
         this.update();
 
@@ -192,8 +216,8 @@ class Tabi {
 
         this.runner = setInterval(function(){
             if (self.players.length === 2){
-                if (self.players[0].hand.length === 0 && self.players[1].hand.length === 0){
-                    console.log("Dealing cards ..");
+                if ((self.deck.length === 48 && self.players[0].acceptFlag !== null) || (self.players[0].hand.length === 0 && self.players[1].hand.length === 0)){
+                    console.log("Dealing new cards ..");
                     if (!self.deal()){
                         console.log("Game over!");
                     }
