@@ -220,7 +220,9 @@ class Tabi {
                 if ((self.deck.length === 48 && self.players[0].acceptFlag !== null) || (self.players[0].hand.length === 0 && self.players[1].hand.length === 0)){
                     console.log("Dealing new cards ..");
                     if (!self.deal()){
-                        console.log("Game over!");
+                        console.log("Game over! Starting new game .. ");
+                        self.players = [self.players[1], self.players[0]];
+                        self.run();
                     }
                 }
             }

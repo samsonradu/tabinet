@@ -230,13 +230,18 @@ var Log = React.createClass({
 		});
 		return (
 			<div className="log">
-				<div className="messages">
+				<div ref="messages" className="messages">
 					{log}
 				</div>
 				<br/>
 				<input placeholder="chat here .. " ref="chat" className="form-control" onKeyPress={this.sendMessage}/>
 			</div>
 		)
+	},
+
+	componentDidUpdate: function(){
+		let el = this.refs.messages.getDOMNode();
+		el.scrollTop = el.offsetHeight;
 	},
 
 	sendMessage: function(event){
