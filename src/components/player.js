@@ -22,6 +22,10 @@ class Player extends EventEmitter {
 			this.confirm(proposal);
 		}).bind(this));
 
+		socket.on('message', (function(data){
+			this.message(data);
+		}).bind(this));
+
 		socket.on('reject', (function(proposal){
 			this.reject(proposal);
 		}).bind(this));
@@ -38,7 +42,7 @@ class Player extends EventEmitter {
 				points = 2;
 			else if (["T", "J", "Q", "K", "A"].indexOf(current.charAt(0)) !== -1)  
 				points = 1;
-			
+
 			return prev + points;
 		}, 0);
 	}
@@ -50,6 +54,10 @@ class Player extends EventEmitter {
 
 	confirm(proposal){
 		this.emit('confirm', proposal);
+	}
+
+	message(data){
+		this.emit('message', data);
 	}
 }
 

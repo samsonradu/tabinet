@@ -67,7 +67,11 @@ class Tabi {
             this.reject(player, data);
         }).bind(this));
 
-        this.log.push("Added player");
+        player.on('message', (function(data){
+            this.log.push(player.name + ": " + data.text);
+            console.log(this.log);
+            this.update();
+        }).bind(this));
 
         this.update();
         if (this.players.length === 2){
@@ -79,13 +83,11 @@ class Tabi {
 
     play(player, card, tableCards){
         if (player.isCurrent === false){
-            console.log("Not your turn!")
             return;
         }
 
-        console.log(player.name + " gives " + card + " takes: " + tableCards.toString());
         this.log.push(player.name + " plays " + card);
-        
+
         this.proposal = [card, tableCards];
         this.update();
     }
@@ -107,9 +109,9 @@ class Tabi {
             otherPlayer.stack.push(card);
             otherPlayer.stack = otherPlayer.stack.concat(tableCards);
         }
-        
+
         this.proposal = [null, []];
-        this.log.push("Player " + player.name + " confirms " + card);
+        this.log.push(player.name + " confirms " + card);
 
         player.isCurrent = true;
         otherPlayer.isCurrent = false;
