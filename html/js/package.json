@@ -1,0 +1,30 @@
+{
+  "name": "tabi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "babel": "^6.1.18",
+    "babel-core": "*",
+    "babel-plugin-transform-react-jsx": "*",
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "*",
+    "flux": "*",
+    "history": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-redux": "*",
+    "react-router": "*",
+    "redux": "*",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "*"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

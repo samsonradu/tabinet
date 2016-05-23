@@ -1,3 +1,5 @@
+"use strict";
+
 let Tabi = require("./components/tabi.js");
 let Player = require("./components/player.js");
 

@@ -1,3 +1,5 @@
+"use strict";
+
 let EventEmitter = require('events');
 
 class Player extends EventEmitter {
