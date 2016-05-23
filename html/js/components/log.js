@@ -13,7 +13,7 @@ export default class Log extends Component{
 					{log}
 				</div>
 				<br/>
-				<input placeholder="chat here .. " ref="chat" className="form-control" onKeyPress={this.sendMessage}/>
+				<input placeholder="chat here .. " ref="chat" className="form-control" onKeyPress={this.sendMessage.bind(this)}/>
 			</div>
 		)
 	}
@@ -26,7 +26,7 @@ export default class Log extends Component{
 	sendMessage(event){
 		if (event.key === 'Enter'){
 			let text = event.target.value;
-			this.refs.chat.value = "";
+			event.target.value = "";
 			this.props.callback(text);
 		}
 	}

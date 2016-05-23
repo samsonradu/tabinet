@@ -512,7 +512,7 @@ var Log = function (_Component) {
 					log
 				),
 				_react2.default.createElement("br", null),
-				_react2.default.createElement("input", { placeholder: "chat here .. ", ref: "chat", className: "form-control", onKeyPress: this.sendMessage })
+				_react2.default.createElement("input", { placeholder: "chat here .. ", ref: "chat", className: "form-control", onKeyPress: this.sendMessage.bind(this) })
 			);
 		}
 	}, {
@@ -526,7 +526,7 @@ var Log = function (_Component) {
 		value: function sendMessage(event) {
 			if (event.key === 'Enter') {
 				var text = event.target.value;
-				this.refs.chat.value = "";
+				event.target.value = "";
 				this.props.callback(text);
 			}
 		}
