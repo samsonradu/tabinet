@@ -75,8 +75,6 @@ let mapStateToProps = function(state){
     }
 }
 
-
-//we could use 2 containers here instead of passing the actions from the top
 export default connect(mapStateToProps, {
     sendMessage,
     join,

@@ -76,7 +76,7 @@ export function refuse(){
 	return function(dispatch){
 		socket.emit("refuse");
 		dispatch({
-			type: ACTION_ACCEPT
+			type: ACTION_REFUSE
 		})
 	}
 }
