@@ -9,12 +9,15 @@ import createLogger from 'redux-logger';
 
 import {ACTION_DATA} from './actions/gameActions.js';
 
+let socket = require("./api/socket.js");
+
 const logger = createLogger();
 
-let store = applyMiddleware(thunk, logger)(createStore)(gameReducer);
+import socketMiddleware from './middleware/socketMiddleware.js';
+
+let store = applyMiddleware(thunk, logger, socketMiddleware)(createStore)(gameReducer);
 
 //websocket connection bind
-let socket = require("./api/socket.js");
 socket.bind(store);
 
 render(

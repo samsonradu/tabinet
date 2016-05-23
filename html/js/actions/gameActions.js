@@ -15,7 +15,6 @@ export const ACTION_DATA = 'ACTION_DATA';
 
 export function sendMessage(data){
 	return function(dispatch){
-		socket.emit("message", {"text" : data});
 		dispatch({
 			type: ACTION_MESSAGE,
 			data: data
@@ -25,7 +24,6 @@ export function sendMessage(data){
 
 export function join(data){
 	return function(dispatch){
-		socket.emit("join", {"name" : data});
 		dispatch({
 			type: ACTION_JOIN,
 			data: data
@@ -35,7 +33,6 @@ export function join(data){
 
 export function confirm(data){
 	return function(dispatch){
-		socket.emit("confirm", data);
 		dispatch({
 			type: ACTION_CONFIRM,
 			data: data
@@ -45,7 +42,6 @@ export function confirm(data){
 
 export function reject(data){
 	return function(dispatch){
-		socket.emit("reject", data);
 		dispatch({
 			type: ACTION_REJECT,
 			data: data
@@ -55,7 +51,6 @@ export function reject(data){
 
 export function play(data){
 	return function(dispatch){
-		socket.emit("play", data);
 		dispatch({
 			type: ACTION_PLAY,
 			data: data
@@ -65,7 +60,6 @@ export function play(data){
 
 export function accept(){
 	return function(dispatch){
-		socket.emit("accept");
 		dispatch({
 			type: ACTION_ACCEPT
 		})
@@ -74,7 +68,6 @@ export function accept(){
 
 export function refuse(){
 	return function(dispatch){
-		socket.emit("refuse");
 		dispatch({
 			type: ACTION_REFUSE
 		})
