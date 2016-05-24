@@ -15,7 +15,6 @@ class Player extends EventEmitter {
 		this.isCurrent = false;
 
 		socket.on('play', (function(data){
-			console.log("playing data")
 			if (data && data.length === 2)
 				this.take(data[0], data[1]);
 		}).bind(this));

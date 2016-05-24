@@ -1,6 +1,4 @@
 
-import {io as socket} from '../api/socket.js';
-
 export const ACTION_MESSAGE = 'ACTION_MESSAGE';
 export const ACTION_JOIN = 'ACTION_JOIN';
 export const ACTION_PLAY = 'ACTION_PLAY';
