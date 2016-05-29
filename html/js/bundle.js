@@ -4,7 +4,6 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.ACTION_DATA = exports.ACTION_SELECT_TABLE = exports.ACTION_SELECT_HAND = exports.ACTION_REFUSE = exports.ACTION_ACCEPT = exports.ACTION_REJECT = exports.ACTION_CONFIRM = exports.ACTION_PLAY = exports.ACTION_JOIN = exports.ACTION_MESSAGE = undefined;
 exports.sendMessage = sendMessage;
 exports.join = join;
 exports.confirm = confirm;
@@ -14,9 +13,6 @@ exports.accept = accept;
 exports.refuse = refuse;
 exports.selectHand = selectHand;
 exports.selectTable = selectTable;
-
-var _socket = require('../api/socket.js');
-
 var ACTION_MESSAGE = exports.ACTION_MESSAGE = 'ACTION_MESSAGE';
 var ACTION_JOIN = exports.ACTION_JOIN = 'ACTION_JOIN';
 var ACTION_PLAY = exports.ACTION_PLAY = 'ACTION_PLAY';
@@ -107,7 +103,7 @@ function selectTable(card) {
 	};
 }
 
-},{"../api/socket.js":2}],2:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 'use strict';
 
 var _gameActions = require('../actions/gameActions.js');
@@ -436,11 +432,11 @@ var Joiner = function (_Component) {
 
 			if (this.props.joined) return _react2.default.createElement(
 				"div",
-				{ className: "col-md-4 col-md-offset-4" },
+				{ className: "col-xs-12 col-md-4 col-md-offset-4" },
 				"Waiting for opponent .."
 			);else return _react2.default.createElement(
 				"div",
-				{ className: "col-md-4 col-md-offset-4" },
+				{ className: "col-xs-12 col-md-4 col-md-offset-4" },
 				_react2.default.createElement("input", { className: "form-control", ref: "username", name: "username", type: "text", placeholder: "enter your name" }),
 				_react2.default.createElement("br", null),
 				_react2.default.createElement(
@@ -899,11 +895,11 @@ function socketMiddleware(store) {
 
       if (action.type === _gameActions.ACTION_JOIN) _socket.io.emit("join", { "name": action.data });
 
-      if (action.type === _gameActions.ACTION_CONFIRM) _socket.io.emit("confirm", { "data": action.data });
+      if (action.type === _gameActions.ACTION_CONFIRM) _socket.io.emit("confirm", action.data);
 
-      if (action.type === _gameActions.ACTION_REJECT) _socket.io.emit("reject", { "data": action.data });
+      if (action.type === _gameActions.ACTION_REJECT) _socket.io.emit("reject", action.data);
 
-      if (action.type === _gameActions.ACTION_PLAY) _socket.io.emit("play", { "data": action.data });
+      if (action.type === _gameActions.ACTION_PLAY) _socket.io.emit("play", action.data);
 
       if (action.type === _gameActions.ACTION_ACCEPT) _socket.io.emit("accept");
 

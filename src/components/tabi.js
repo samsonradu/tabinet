@@ -97,7 +97,7 @@ class Tabi {
         player.on('accept', function(){
             player.acceptFlag = true;
         })
-        player.on('reject', function(){
+        player.on('refuse', function(){
             player.acceptFlag = false;
         })
 

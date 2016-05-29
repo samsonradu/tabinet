@@ -13,13 +13,13 @@ export default function socketMiddleware(store){
  				socket.emit("join", {"name" : action.data});
 
  			if (action.type === ACTION_CONFIRM) 
- 				socket.emit("confirm", {"data" : action.data});
+ 				socket.emit("confirm", action.data);
 
  			if (action.type === ACTION_REJECT) 
- 				socket.emit("reject", {"data" : action.data});
+ 				socket.emit("reject", action.data);
 
   			if (action.type === ACTION_PLAY) 
- 				socket.emit("play", {"data" : action.data});
+ 				socket.emit("play", action.data);
 
  			if (action.type === ACTION_ACCEPT) 
  				socket.emit("accept");
