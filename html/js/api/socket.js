@@ -7,13 +7,13 @@ socket.on("connect", function(){
 
 
 module.exports = {
-	bind: function(store){
-		socket.on("data", function (data) {
-			store.dispatch({
-				'type' : ACTION_DATA,
-				'payload' : data
-			});
-		})
-	},
-	io: socket
+    bind: function(store){
+        socket.on("data", function (data) {
+            store.dispatch({
+                'type' : ACTION_DATA,
+                'payload' : data
+            });
+        })
+    },
+    io: socket
 };

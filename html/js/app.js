@@ -21,5 +21,5 @@ let store = applyMiddleware(thunk, logger, socketMiddleware)(createStore)(gameRe
 socket.bind(store);
 
 render(
-	<App store={store} />,
-	document.getElementById('content'));
+    <App store={store} />,
+    document.getElementById('content'));

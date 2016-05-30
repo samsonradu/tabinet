@@ -12,80 +12,80 @@ export const ACTION_DATA = 'ACTION_DATA';
 
 
 export function sendMessage(data){
-	return function(dispatch){
-		dispatch({
-			type: ACTION_MESSAGE,
-			data: data
-		});
-	}
+    return function(dispatch){
+        dispatch({
+            type: ACTION_MESSAGE,
+            data: data
+        });
+    }
 }
 
 export function join(data){
-	return function(dispatch){
-		dispatch({
-			type: ACTION_JOIN,
-			data: data
-		});
-	}
+    return function(dispatch){
+        dispatch({
+            type: ACTION_JOIN,
+            data: data
+        });
+    }
 }
 
 export function confirm(data){
-	return function(dispatch){
-		dispatch({
-			type: ACTION_CONFIRM,
-			data: data
-		});
-	}
+    return function(dispatch){
+        dispatch({
+            type: ACTION_CONFIRM,
+            data: data
+        });
+    }
 }
 
 export function reject(data){
-	return function(dispatch){
-		dispatch({
-			type: ACTION_REJECT,
-			data: data
-		});
-	}
+    return function(dispatch){
+        dispatch({
+            type: ACTION_REJECT,
+            data: data
+        });
+    }
 }
 
 export function play(data){
-	return function(dispatch){
-		dispatch({
-			type: ACTION_PLAY,
-			data: data
-		});
-	}
+    return function(dispatch){
+        dispatch({
+            type: ACTION_PLAY,
+            data: data
+        });
+    }
 }
 
 export function accept(){
-	return function(dispatch){
-		dispatch({
-			type: ACTION_ACCEPT
-		})
-	}
+    return function(dispatch){
+        dispatch({
+            type: ACTION_ACCEPT
+        })
+    }
 }
 
 export function refuse(){
-	return function(dispatch){
-		dispatch({
-			type: ACTION_REFUSE
-		})
-	}
+    return function(dispatch){
+        dispatch({
+            type: ACTION_REFUSE
+        })
+    }
 }
 
 export function selectHand(card){
-	return function(dispatch){
-		dispatch({
-			type: ACTION_SELECT_HAND,
-			card: card
-		})
-	}
+    return function(dispatch){
+        dispatch({
+            type: ACTION_SELECT_HAND,
+            card: card
+        })
+    }
 }
 
 export function selectTable(card){
-	return function(dispatch){
-		dispatch({
-			type: ACTION_SELECT_TABLE,
-			card: card
-		})
-	}
+    return function(dispatch){
+        dispatch({
+            type: ACTION_SELECT_TABLE,
+            card: card
+        })
+    }
 }
