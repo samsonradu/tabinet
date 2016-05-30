@@ -1,4 +1,4 @@
-# tabi
+# tabinet
 A popular romanian card game
 
 <i>Work in progress</i>
