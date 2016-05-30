@@ -104,11 +104,15 @@ function selectTable(card) {
 }
 
 },{}],2:[function(require,module,exports){
-'use strict';
+"use strict";
 
-var _gameActions = require('../actions/gameActions.js');
+var _gameActions = require("../actions/gameActions.js");
 
+console.log("initializing socket");
 var socket = io();
+socket.on("connect", function () {
+	console.log("connected socket");
+});
 
 module.exports = {
 	bind: function bind(store) {
@@ -205,7 +209,7 @@ var Card = function (_Component) {
 			var html = "";
 			if (value) html = _react2.default.createElement("img", { src: "/img/cards/" + value + ".svg" });else {
 				var style = {
-					"background-color": "#337AB7",
+					"backgroundColor": "#337AB7",
 					width: "70px",
 					height: "110px"
 				};
@@ -574,7 +578,7 @@ var Opponent = function (_Component) {
 			}
 			return _react2.default.createElement(
 				'div',
-				{ className: 'opponent' },
+				{ className: 'hidden-xs opponent' },
 				cards,
 				!this.props.turn ? _react2.default.createElement(
 					'span',
@@ -818,8 +822,8 @@ var Game = function (_Component) {
 							_react2.default.createElement(
 								'div',
 								{ className: 'col-md-3' },
-								_react2.default.createElement(_proposal2.default, { data: st.proposal }),
-								_react2.default.createElement(_controls2.default, { deck: st.deck, accept: this.props.accept, refuse: this.props.refuse, confirm: this.props.confirm, reject: this.props.reject, play: this.props.play, proposal: st.proposal, turn: st.turn })
+								_react2.default.createElement(_controls2.default, { deck: st.deck, accept: this.props.accept, refuse: this.props.refuse, confirm: this.props.confirm, reject: this.props.reject, play: this.props.play, proposal: st.proposal, turn: st.turn }),
+								_react2.default.createElement(_proposal2.default, { data: st.proposal })
 							),
 							_react2.default.createElement(
 								'div',

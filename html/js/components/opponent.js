@@ -11,7 +11,7 @@ export default class Opponent extends Component{
 			);
 		}
 		return (
-			<div className="opponent">
+			<div className="hidden-xs opponent">
 				{cards}
 				{!this.props.turn ? (<span className='label-turn label label-primary'>turn</span>) : " "}
 			</div>

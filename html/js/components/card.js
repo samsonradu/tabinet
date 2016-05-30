@@ -8,7 +8,7 @@ export default class Card extends Component{
 			html = (<img src={"/img/cards/" + value + ".svg"}/>);
 		else {
 			let style = {
-				"background-color": "#337AB7",
+				"backgroundColor": "#337AB7",
 				width: "70px",
 				height: "110px"
 			};

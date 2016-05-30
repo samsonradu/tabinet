@@ -1,6 +1,10 @@
 import {ACTION_DATA} from '../actions/gameActions.js';
-
+console.log("initializing socket");
 let socket = io();
+socket.on("connect", function(){
+    console.log("connected socket");
+});
+
 
 module.exports = {
 	bind: function(store){

@@ -6,7 +6,7 @@
   "dependencies": {
     "babel": "^6.1.18",
     "babel-core": "*",
-    "babel-plugin-transform-react-jsx": "*",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
     "babel-preset-react": "^6.3.13",
     "babelify": "^7.2.0",
     "browserify": "*",
@@ -20,8 +20,7 @@
     "redux-logger": "^2.6.1",
     "redux-thunk": "*"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

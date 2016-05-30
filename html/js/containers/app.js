@@ -50,8 +50,8 @@ class Game extends Component {
 								<Hand turn={st.turn} data={st.hand} proposal={st.proposal} selectHand={this.props.selectHand} />
 							</div>
 							<div className="col-md-3">
-								<Proposal data={st.proposal} />
 								<Controls deck={st.deck} accept={this.props.accept} refuse={this.props.refuse} confirm={this.props.confirm} reject={this.props.reject} play={this.props.play} proposal={st.proposal} turn={st.turn} />
+								<Proposal data={st.proposal} />
 							</div>
 							<div className="col-md-3">
 								<Log callback={this.props.sendMessage} data={st.log}/>
