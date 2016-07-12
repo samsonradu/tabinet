@@ -2,7 +2,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 exports.sendMessage = sendMessage;
 exports.join = join;
@@ -25,82 +25,82 @@ var ACTION_SELECT_TABLE = exports.ACTION_SELECT_TABLE = 'ACTION_SELECT_TABLE';
 var ACTION_DATA = exports.ACTION_DATA = 'ACTION_DATA';
 
 function sendMessage(data) {
-	return function (dispatch) {
-		dispatch({
-			type: ACTION_MESSAGE,
-			data: data
-		});
-	};
+    return function (dispatch) {
+        dispatch({
+            type: ACTION_MESSAGE,
+            data: data
+        });
+    };
 }
 
 function join(data) {
-	return function (dispatch) {
-		dispatch({
-			type: ACTION_JOIN,
-			data: data
-		});
-	};
+    return function (dispatch) {
+        dispatch({
+            type: ACTION_JOIN,
+            data: data
+        });
+    };
 }
 
 function confirm(data) {
-	return function (dispatch) {
-		dispatch({
-			type: ACTION_CONFIRM,
-			data: data
-		});
-	};
+    return function (dispatch) {
+        dispatch({
+            type: ACTION_CONFIRM,
+            data: data
+        });
+    };
 }
 
 function reject(data) {
-	return function (dispatch) {
-		dispatch({
-			type: ACTION_REJECT,
-			data: data
-		});
-	};
+    return function (dispatch) {
+        dispatch({
+            type: ACTION_REJECT,
+            data: data
+        });
+    };
 }
 
 function play(data) {
-	return function (dispatch) {
-		dispatch({
-			type: ACTION_PLAY,
-			data: data
-		});
-	};
+    return function (dispatch) {
+        dispatch({
+            type: ACTION_PLAY,
+            data: data
+        });
+    };
 }
 
 function accept() {
-	return function (dispatch) {
-		dispatch({
-			type: ACTION_ACCEPT
-		});
-	};
+    return function (dispatch) {
+        dispatch({
+            type: ACTION_ACCEPT
+        });
+    };
 }
 
 function refuse() {
-	return function (dispatch) {
-		dispatch({
-			type: ACTION_REFUSE
-		});
-	};
+    return function (dispatch) {
+        dispatch({
+            type: ACTION_REFUSE
+        });
+    };
 }
 
 function selectHand(card) {
-	return function (dispatch) {
-		dispatch({
-			type: ACTION_SELECT_HAND,
-			card: card
-		});
-	};
+    return function (dispatch) {
+        dispatch({
+            type: ACTION_SELECT_HAND,
+            card: card
+        });
+    };
 }
 
 function selectTable(card) {
-	return function (dispatch) {
-		dispatch({
-			type: ACTION_SELECT_TABLE,
-			card: card
-		});
-	};
+    return function (dispatch) {
+        dispatch({
+            type: ACTION_SELECT_TABLE,
+            card: card
+        });
+    };
 }
 
 },{}],2:[function(require,module,exports){
@@ -111,19 +111,19 @@ var _gameActions = require("../actions/gameActions.js");
 console.log("initializing socket");
 var socket = io();
 socket.on("connect", function () {
-	console.log("connected socket");
+    console.log("connected socket");
 });
 
 module.exports = {
-	bind: function bind(store) {
-		socket.on("data", function (data) {
-			store.dispatch({
-				'type': _gameActions.ACTION_DATA,
-				'payload': data
-			});
-		});
-	},
-	io: socket
+    bind: function bind(store) {
+        socket.on("data", function (data) {
+            store.dispatch({
+                'type': _gameActions.ACTION_DATA,
+                'payload': data
+            });
+        });
+    },
+    io: socket
 };
 
 },{"../actions/gameActions.js":1}],3:[function(require,module,exports){
@@ -176,7 +176,7 @@ socket.bind(store);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -194,45 +194,45 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Card = function (_Component) {
-	_inherits(Card, _Component);
+    _inherits(Card, _Component);
 
-	function Card() {
-		_classCallCheck(this, Card);
+    function Card() {
+        _classCallCheck(this, Card);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Card).apply(this, arguments));
-	}
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(Card).apply(this, arguments));
+    }
 
-	_createClass(Card, [{
-		key: "render",
-		value: function render() {
-			var value = this.props.value;
-			var html = "";
-			if (value) html = _react2.default.createElement("img", { src: "/img/cards/" + value + ".svg" });else {
-				var style = {
-					"backgroundColor": "#337AB7",
-					width: "70px",
-					height: "110px"
-				};
-				html = _react2.default.createElement(
-					"div",
-					{ style: style },
-					" "
-				);
-			}
-			var classes = this.props.classes;
-			if (this.props.clickHandler) return _react2.default.createElement(
-				"a",
-				{ className: classes, onClick: this.props.clickHandler },
-				html
-			);else return _react2.default.createElement(
-				"a",
-				{ className: classes },
-				html
-			);
-		}
-	}]);
+    _createClass(Card, [{
+        key: "render",
+        value: function render() {
+            var value = this.props.value;
+            var html = "";
+            if (value) html = _react2.default.createElement("img", { src: "/img/cards/" + value + ".svg" });else {
+                var style = {
+                    "backgroundColor": "#337AB7",
+                    width: "70px",
+                    height: "110px"
+                };
+                html = _react2.default.createElement(
+                    "div",
+                    { style: style },
+                    " "
+                );
+            }
+            var classes = this.props.classes;
+            if (this.props.clickHandler) return _react2.default.createElement(
+                "a",
+                { className: classes, onClick: this.props.clickHandler },
+                html
+            );else return _react2.default.createElement(
+                "a",
+                { className: classes },
+                html
+            );
+        }
+    }]);
 
-	return Card;
+    return Card;
 }(_react.Component);
 
 exports.default = Card;
@@ -241,7 +241,7 @@ exports.default = Card;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -259,73 +259,73 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Controls = function (_Component) {
-	_inherits(Controls, _Component);
+    _inherits(Controls, _Component);
 
-	function Controls() {
-		_classCallCheck(this, Controls);
+    function Controls() {
+        _classCallCheck(this, Controls);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Controls).apply(this, arguments));
-	}
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(Controls).apply(this, arguments));
+    }
 
-	_createClass(Controls, [{
-		key: "render",
-		value: function render() {
-			var _this2 = this;
+    _createClass(Controls, [{
+        key: "render",
+        value: function render() {
+            var _this2 = this;
 
-			var buttons = [];
-			if (this.props.deck === 48 && this.props.turn) {
-				buttons.push(_react2.default.createElement(
-					"a",
-					{ onClick: function onClick() {
-							return _this2.props.accept();
-						}, href: "#", className: "btn btn-primary" },
-					"accept"
-				));
-				buttons.push(_react2.default.createElement(
-					"a",
-					{ onClick: function onClick() {
-							return _this2.props.refuse();
-						}, href: "#", className: "btn btn-danger" },
-					"refuse"
-				));
-			} else if (this.props.proposal[0]) {
-				if (this.props.turn) buttons.push(_react2.default.createElement(
-					"a",
-					{ onClick: function onClick() {
-							return _this2.props.play(_this2.props.proposal);
-						}, href: "#", className: "btn btn-primary" },
-					"play"
-				));else {
-					buttons.push(_react2.default.createElement(
-						"a",
-						{ onClick: function onClick() {
-								return _this2.props.confirm(_this2.props.proposal);
-							}, href: "#", className: "btn btn-success" },
-						"confirm"
-					));
-					buttons.push(_react2.default.createElement(
-						"span",
-						null,
-						" "
-					));
-					buttons.push(_react2.default.createElement(
-						"a",
-						{ onClick: function onClick() {
-								return _this2.props.reject(_this2.props.proposal);
-							}, href: "#", className: "btn btn-danger" },
-						"reject"
-					));
-				}
-			}
-			return _react2.default.createElement(
-				"div",
-				{ className: "buttons" },
-				buttons
-			);
-		}
-	}]);
+            var buttons = [];
+            if (this.props.deck === 48 && this.props.turn) {
+                buttons.push(_react2.default.createElement(
+                    "a",
+                    { onClick: function onClick() {
+                            return _this2.props.accept();
+                        }, href: "#", className: "btn btn-primary" },
+                    "accept"
+                ));
+                buttons.push(_react2.default.createElement(
+                    "a",
+                    { onClick: function onClick() {
+                            return _this2.props.refuse();
+                        }, href: "#", className: "btn btn-danger" },
+                    "refuse"
+                ));
+            } else if (this.props.proposal[0]) {
+                if (this.props.turn) buttons.push(_react2.default.createElement(
+                    "a",
+                    { onClick: function onClick() {
+                            return _this2.props.play(_this2.props.proposal);
+                        }, href: "#", className: "btn btn-primary" },
+                    "play"
+                ));else {
+                    buttons.push(_react2.default.createElement(
+                        "a",
+                        { onClick: function onClick() {
+                                return _this2.props.confirm(_this2.props.proposal);
+                            }, href: "#", className: "btn btn-success" },
+                        "confirm"
+                    ));
+                    buttons.push(_react2.default.createElement(
+                        "span",
+                        null,
+                        " "
+                    ));
+                    buttons.push(_react2.default.createElement(
+                        "a",
+                        { onClick: function onClick() {
+                                return _this2.props.reject(_this2.props.proposal);
+                            }, href: "#", className: "btn btn-danger" },
+                        "reject"
+                    ));
+                }
+            }
+            return _react2.default.createElement(
+                "div",
+                { className: "buttons" },
+                buttons
+            );
+        }
+    }]);
 
-	return Controls;
+    return Controls;
 }(_react.Component);
 
 exports.default = Controls;
@@ -334,7 +334,7 @@ exports.default = Controls;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -356,39 +356,39 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Hand = function (_Component) {
-	_inherits(Hand, _Component);
+    _inherits(Hand, _Component);
 
-	function Hand() {
-		_classCallCheck(this, Hand);
+    function Hand() {
+        _classCallCheck(this, Hand);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Hand).apply(this, arguments));
-	}
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(Hand).apply(this, arguments));
+    }
 
-	_createClass(Hand, [{
-		key: 'render',
-		value: function render() {
-			var self = this;
-			var hand = this.props.data.map(function (card) {
-				var classes = "card";
-				if (card === self.props.proposal[0]) classes += " selected";
-				return _react2.default.createElement(_card2.default, { clickHandler: function clickHandler() {
-						return self.props.selectHand(card);
-					}, value: card, classes: classes });
-			});
-			return _react2.default.createElement(
-				'div',
-				{ className: 'hand' },
-				hand,
-				this.props.turn ? _react2.default.createElement(
-					'span',
-					{ className: 'label-turn label label-primary' },
-					'turn'
-				) : " "
-			);
-		}
-	}]);
+    _createClass(Hand, [{
+        key: 'render',
+        value: function render() {
+            var self = this;
+            var hand = this.props.data.map(function (card) {
+                var classes = "card";
+                if (card === self.props.proposal[0]) classes += " selected";
+                return _react2.default.createElement(_card2.default, { clickHandler: function clickHandler() {
+                        return self.props.selectHand(card);
+                    }, value: card, classes: classes });
+            });
+            return _react2.default.createElement(
+                'div',
+                { className: 'hand' },
+                hand,
+                this.props.turn ? _react2.default.createElement(
+                    'span',
+                    { className: 'label-turn label label-primary' },
+                    'turn'
+                ) : " "
+            );
+        }
+    }]);
 
-	return Hand;
+    return Hand;
 }(_react.Component);
 
 exports.default = Hand;
@@ -397,7 +397,7 @@ exports.default = Hand;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -415,46 +415,46 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Joiner = function (_Component) {
-	_inherits(Joiner, _Component);
+    _inherits(Joiner, _Component);
 
-	function Joiner() {
-		_classCallCheck(this, Joiner);
+    function Joiner() {
+        _classCallCheck(this, Joiner);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Joiner).apply(this, arguments));
-	}
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(Joiner).apply(this, arguments));
+    }
 
-	_createClass(Joiner, [{
-		key: "join",
-		value: function join() {
-			var username = this.refs.username;
-			this.props.callback(username.value);
-		}
-	}, {
-		key: "render",
-		value: function render() {
-			var _this2 = this;
+    _createClass(Joiner, [{
+        key: "join",
+        value: function join() {
+            var username = this.refs.username;
+            this.props.callback(username.value);
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this2 = this;
 
-			if (this.props.joined) return _react2.default.createElement(
-				"div",
-				{ className: "col-xs-12 col-md-4 col-md-offset-4" },
-				"Waiting for opponent .."
-			);else return _react2.default.createElement(
-				"div",
-				{ className: "col-xs-12 col-md-4 col-md-offset-4" },
-				_react2.default.createElement("input", { className: "form-control", ref: "username", name: "username", type: "text", placeholder: "enter your name" }),
-				_react2.default.createElement("br", null),
-				_react2.default.createElement(
-					"a",
-					{ onClick: function onClick() {
-							return _this2.join();
-						}, className: "btn btn-block btn-success" },
-					"join"
-				)
-			);
-		}
-	}]);
+            if (this.props.joined) return _react2.default.createElement(
+                "div",
+                { className: "col-xs-12 col-md-4 col-md-offset-4" },
+                "Waiting for opponent .."
+            );else return _react2.default.createElement(
+                "div",
+                { className: "col-xs-12 col-md-4 col-md-offset-4" },
+                _react2.default.createElement("input", { className: "form-control", ref: "username", name: "username", type: "text", placeholder: "enter your name" }),
+                _react2.default.createElement("br", null),
+                _react2.default.createElement(
+                    "a",
+                    { onClick: function onClick() {
+                            return _this2.join();
+                        }, className: "btn btn-block btn-success" },
+                    "join"
+                )
+            );
+        }
+    }]);
 
-	return Joiner;
+    return Joiner;
 }(_react.Component);
 
 exports.default = Joiner;
@@ -463,7 +463,7 @@ exports.default = Joiner;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -481,56 +481,56 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Log = function (_Component) {
-	_inherits(Log, _Component);
+    _inherits(Log, _Component);
 
-	function Log() {
-		_classCallCheck(this, Log);
+    function Log() {
+        _classCallCheck(this, Log);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Log).apply(this, arguments));
-	}
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(Log).apply(this, arguments));
+    }
 
-	_createClass(Log, [{
-		key: "render",
-		value: function render() {
-			var log = this.props.data.map(function (message) {
-				return _react2.default.createElement(
-					"div",
-					{ className: "form-control message" },
-					" ",
-					message,
-					" "
-				);
-			});
-			return _react2.default.createElement(
-				"div",
-				{ className: "log" },
-				_react2.default.createElement(
-					"div",
-					{ ref: "messages", className: "messages" },
-					log
-				),
-				_react2.default.createElement("br", null),
-				_react2.default.createElement("input", { placeholder: "chat here .. ", ref: "chat", className: "form-control", onKeyPress: this.sendMessage.bind(this) })
-			);
-		}
-	}, {
-		key: "componentDidUpdate",
-		value: function componentDidUpdate() {
-			var el = this.refs.messages;
-			el.scrollTop = el.offsetHeight;
-		}
-	}, {
-		key: "sendMessage",
-		value: function sendMessage(event) {
-			if (event.key === 'Enter') {
-				var text = event.target.value;
-				event.target.value = "";
-				this.props.callback(text);
-			}
-		}
-	}]);
+    _createClass(Log, [{
+        key: "render",
+        value: function render() {
+            var log = this.props.data.map(function (message) {
+                return _react2.default.createElement(
+                    "div",
+                    { className: "form-control message" },
+                    " ",
+                    message,
+                    " "
+                );
+            });
+            return _react2.default.createElement(
+                "div",
+                { className: "log" },
+                _react2.default.createElement(
+                    "div",
+                    { ref: "messages", className: "messages" },
+                    log
+                ),
+                _react2.default.createElement("br", null),
+                _react2.default.createElement("input", { placeholder: "chat here .. ", ref: "chat", className: "form-control", onKeyPress: this.sendMessage.bind(this) })
+            );
+        }
+    }, {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate() {
+            var el = this.refs.messages;
+            el.scrollTop = el.offsetHeight;
+        }
+    }, {
+        key: "sendMessage",
+        value: function sendMessage(event) {
+            if (event.key === 'Enter') {
+                var text = event.target.value;
+                event.target.value = "";
+                this.props.callback(text);
+            }
+        }
+    }]);
 
-	return Log;
+    return Log;
 }(_react.Component);
 
 exports.default = Log;
@@ -539,7 +539,7 @@ exports.default = Log;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -561,35 +561,35 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Opponent = function (_Component) {
-	_inherits(Opponent, _Component);
+    _inherits(Opponent, _Component);
 
-	function Opponent() {
-		_classCallCheck(this, Opponent);
+    function Opponent() {
+        _classCallCheck(this, Opponent);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Opponent).apply(this, arguments));
-	}
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(Opponent).apply(this, arguments));
+    }
 
-	_createClass(Opponent, [{
-		key: 'render',
-		value: function render() {
-			var cards = [];
-			for (var i = 0; i < this.props.data.hand; i++) {
-				cards.push(_react2.default.createElement(_card2.default, { value: '', classes: 'card card-selected' }));
-			}
-			return _react2.default.createElement(
-				'div',
-				{ className: 'hidden-xs opponent' },
-				cards,
-				!this.props.turn ? _react2.default.createElement(
-					'span',
-					{ className: 'label-turn label label-primary' },
-					'turn'
-				) : " "
-			);
-		}
-	}]);
+    _createClass(Opponent, [{
+        key: 'render',
+        value: function render() {
+            var cards = [];
+            for (var i = 0; i < this.props.data.hand; i++) {
+                cards.push(_react2.default.createElement(_card2.default, { value: '', classes: 'card card-selected' }));
+            }
+            return _react2.default.createElement(
+                'div',
+                { className: 'hidden-xs opponent' },
+                cards,
+                !this.props.turn ? _react2.default.createElement(
+                    'span',
+                    { className: 'label-turn label label-primary' },
+                    'turn'
+                ) : " "
+            );
+        }
+    }]);
 
-	return Opponent;
+    return Opponent;
 }(_react.Component);
 
 exports.default = Opponent;
@@ -598,7 +598,7 @@ exports.default = Opponent;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -620,39 +620,39 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Proposal = function (_Component) {
-	_inherits(Proposal, _Component);
+    _inherits(Proposal, _Component);
 
-	function Proposal() {
-		_classCallCheck(this, Proposal);
+    function Proposal() {
+        _classCallCheck(this, Proposal);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Proposal).apply(this, arguments));
-	}
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(Proposal).apply(this, arguments));
+    }
 
-	_createClass(Proposal, [{
-		key: 'render',
-		value: function render() {
-			var proposal = this.props.data.map(function (card) {
-				if (Array.isArray(card)) {
-					var arr = card.map(function (item) {
-						return _react2.default.createElement(_card2.default, { value: item, classes: 'card' });
-					});
-					return arr;
-				} else if (card) return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_card2.default, { value: card, classes: 'card' })
-				);
-			});
+    _createClass(Proposal, [{
+        key: 'render',
+        value: function render() {
+            var proposal = this.props.data.map(function (card) {
+                if (Array.isArray(card)) {
+                    var arr = card.map(function (item) {
+                        return _react2.default.createElement(_card2.default, { value: item, classes: 'card' });
+                    });
+                    return arr;
+                } else if (card) return _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(_card2.default, { value: card, classes: 'card' })
+                );
+            });
 
-			return _react2.default.createElement(
-				'div',
-				{ className: 'proposal' },
-				proposal
-			);
-		}
-	}]);
+            return _react2.default.createElement(
+                'div',
+                { className: 'proposal' },
+                proposal
+            );
+        }
+    }]);
 
-	return Proposal;
+    return Proposal;
 }(_react.Component);
 
 exports.default = Proposal;
@@ -661,7 +661,7 @@ exports.default = Proposal;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -683,35 +683,35 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Table = function (_Component) {
-	_inherits(Table, _Component);
+    _inherits(Table, _Component);
 
-	function Table() {
-		_classCallCheck(this, Table);
+    function Table() {
+        _classCallCheck(this, Table);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Table).apply(this, arguments));
-	}
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(Table).apply(this, arguments));
+    }
 
-	_createClass(Table, [{
-		key: 'render',
-		value: function render() {
-			var self = this;
-			var table = this.props.data.map(function (card) {
-				var classes = "card";
-				if (Array.isArray(self.props.proposal[1]) && self.props.proposal[1].indexOf(card) !== -1) classes += " selected";
-				return _react2.default.createElement(_card2.default, { clickHandler: function clickHandler() {
-						return self.props.selectTable(card);
-					}, value: card, classes: classes });
-			});
+    _createClass(Table, [{
+        key: 'render',
+        value: function render() {
+            var self = this;
+            var table = this.props.data.map(function (card) {
+                var classes = "card";
+                if (Array.isArray(self.props.proposal[1]) && self.props.proposal[1].indexOf(card) !== -1) classes += " selected";
+                return _react2.default.createElement(_card2.default, { clickHandler: function clickHandler() {
+                        return self.props.selectTable(card);
+                    }, value: card, classes: classes });
+            });
 
-			return _react2.default.createElement(
-				'div',
-				{ className: 'table' },
-				table
-			);
-		}
-	}]);
+            return _react2.default.createElement(
+                'div',
+                { className: 'table' },
+                table
+            );
+        }
+    }]);
 
-	return Table;
+    return Table;
 }(_react.Component);
 
 exports.default = Table;
@@ -720,7 +720,7 @@ exports.default = Table;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -770,119 +770,119 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Game = function (_Component) {
-	_inherits(Game, _Component);
+    _inherits(Game, _Component);
 
-	function Game() {
-		_classCallCheck(this, Game);
+    function Game() {
+        _classCallCheck(this, Game);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Game).apply(this, arguments));
-	}
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(Game).apply(this, arguments));
+    }
 
-	_createClass(Game, [{
-		key: 'render',
-		value: function render() {
-			var st = this.props.st;
-			var store = this.props.store;
+    _createClass(Game, [{
+        key: 'render',
+        value: function render() {
+            var st = this.props.st;
+            var store = this.props.store;
 
-			var self = this;
+            var self = this;
 
-			if (st.players.length < 2) {
-				var ids = st.players.map(function (player) {
-					return player.id;
-				});
-				var opponents = st.players.filter(function (item) {
-					return item.isOpponent;
-				});
+            if (st.players.length < 2) {
+                var ids = st.players.map(function (player) {
+                    return player.id;
+                });
+                var opponents = st.players.filter(function (item) {
+                    return item.isOpponent;
+                });
 
-				return _react2.default.createElement(_joiner2.default, { callback: this.props.join, joined: st.players.length > 0 && !opponents.length });
-			} else {
-				var _opponents = st.players.filter(function (item) {
-					return item.isOpponent;
-				});
-				var opponent = _opponents[0];
+                return _react2.default.createElement(_joiner2.default, { callback: this.props.join, joined: st.players.length > 0 && !opponents.length });
+            } else {
+                var _opponents = st.players.filter(function (item) {
+                    return item.isOpponent;
+                });
+                var opponent = _opponents[0];
 
-				return _react2.default.createElement(
-					_reactRedux.Provider,
-					{ store: store },
-					_react2.default.createElement(
-						'div',
-						{ 'class': 'game-container' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'row game-table' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-6' },
-								_react2.default.createElement(_opponent2.default, { turn: st.turn, data: opponent }),
-								_react2.default.createElement('br', null),
-								_react2.default.createElement(_table2.default, { data: st.table, proposal: st.proposal, selectTable: this.props.selectTable }),
-								_react2.default.createElement('br', null),
-								_react2.default.createElement(_hand2.default, { turn: st.turn, data: st.hand, proposal: st.proposal, selectHand: this.props.selectHand })
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-3' },
-								_react2.default.createElement(_controls2.default, { deck: st.deck, accept: this.props.accept, refuse: this.props.refuse, confirm: this.props.confirm, reject: this.props.reject, play: this.props.play, proposal: st.proposal, turn: st.turn }),
-								_react2.default.createElement(_proposal2.default, { data: st.proposal })
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-3' },
-								_react2.default.createElement(_log2.default, { callback: this.props.sendMessage, data: st.log }),
-								_react2.default.createElement(
-									'div',
-									{ 'class': 'stats' },
-									_react2.default.createElement('br', null),
-									_react2.default.createElement(
-										'div',
-										null,
-										'Points: ',
-										st.points,
-										' (',
-										st.extraPoints,
-										')'
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'stack' },
-										'Stack: ',
-										st.stack.length
-									)
-								)
-							)
-						)
-					)
-				);
-			}
-		}
-	}]);
+                return _react2.default.createElement(
+                    _reactRedux.Provider,
+                    { store: store },
+                    _react2.default.createElement(
+                        'div',
+                        { 'class': 'game-container' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'row game-table' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'col-md-6' },
+                                _react2.default.createElement(_opponent2.default, { turn: st.turn, data: opponent }),
+                                _react2.default.createElement('br', null),
+                                _react2.default.createElement(_table2.default, { data: st.table, proposal: st.proposal, selectTable: this.props.selectTable }),
+                                _react2.default.createElement('br', null),
+                                _react2.default.createElement(_hand2.default, { turn: st.turn, data: st.hand, proposal: st.proposal, selectHand: this.props.selectHand })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'col-md-3' },
+                                _react2.default.createElement(_controls2.default, { deck: st.deck, accept: this.props.accept, refuse: this.props.refuse, confirm: this.props.confirm, reject: this.props.reject, play: this.props.play, proposal: st.proposal, turn: st.turn }),
+                                _react2.default.createElement(_proposal2.default, { data: st.proposal })
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'col-md-3' },
+                                _react2.default.createElement(_log2.default, { callback: this.props.sendMessage, data: st.log }),
+                                _react2.default.createElement(
+                                    'div',
+                                    { 'class': 'stats' },
+                                    _react2.default.createElement('br', null),
+                                    _react2.default.createElement(
+                                        'div',
+                                        null,
+                                        'Points: ',
+                                        st.points,
+                                        ' (',
+                                        st.extraPoints,
+                                        ')'
+                                    ),
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'stack' },
+                                        'Stack: ',
+                                        st.stack.length
+                                    )
+                                )
+                            )
+                        )
+                    )
+                );
+            }
+        }
+    }]);
 
-	return Game;
+    return Game;
 }(_react.Component);
 
 var mapStateToProps = function mapStateToProps(state) {
-	return {
-		st: state
-	};
+    return {
+        st: state
+    };
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, {
-	sendMessage: _gameActions.sendMessage,
-	join: _gameActions.join,
-	confirm: _gameActions.confirm,
-	reject: _gameActions.reject,
-	play: _gameActions.play,
-	accept: _gameActions.accept,
-	refuse: _gameActions.refuse,
-	selectHand: _gameActions.selectHand,
-	selectTable: _gameActions.selectTable
+    sendMessage: _gameActions.sendMessage,
+    join: _gameActions.join,
+    confirm: _gameActions.confirm,
+    reject: _gameActions.reject,
+    play: _gameActions.play,
+    accept: _gameActions.accept,
+    refuse: _gameActions.refuse,
+    selectHand: _gameActions.selectHand,
+    selectTable: _gameActions.selectTable
 })(Game);
 
 },{"../actions/gameActions.js":1,"../components/controls.js":5,"../components/hand.js":6,"../components/joiner.js":7,"../components/log.js":8,"../components/opponent.js":9,"../components/proposal.js":10,"../components/table.js":11,"react":192,"react-redux":24}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.default = socketMiddleware;
 
@@ -891,27 +891,27 @@ var _socket = require('../api/socket.js');
 var _gameActions = require('../actions/gameActions.js');
 
 function socketMiddleware(store) {
-  return function (next) {
-    return function (action) {
-      var result = next(action);
+    return function (next) {
+        return function (action) {
+            var result = next(action);
 
-      if (action.type === _gameActions.ACTION_MESSAGE) _socket.io.emit("message", { "text": action.data });
+            if (action.type === _gameActions.ACTION_MESSAGE) _socket.io.emit("message", { "text": action.data });
 
-      if (action.type === _gameActions.ACTION_JOIN) _socket.io.emit("join", { "name": action.data });
+            if (action.type === _gameActions.ACTION_JOIN) _socket.io.emit("join", { "name": action.data });
 
-      if (action.type === _gameActions.ACTION_CONFIRM) _socket.io.emit("confirm", action.data);
+            if (action.type === _gameActions.ACTION_CONFIRM) _socket.io.emit("confirm", action.data);
 
-      if (action.type === _gameActions.ACTION_REJECT) _socket.io.emit("reject", action.data);
+            if (action.type === _gameActions.ACTION_REJECT) _socket.io.emit("reject", action.data);
 
-      if (action.type === _gameActions.ACTION_PLAY) _socket.io.emit("play", action.data);
+            if (action.type === _gameActions.ACTION_PLAY) _socket.io.emit("play", action.data);
 
-      if (action.type === _gameActions.ACTION_ACCEPT) _socket.io.emit("accept");
+            if (action.type === _gameActions.ACTION_ACCEPT) _socket.io.emit("accept");
 
-      if (action.type === _gameActions.ACTION_REFUSE) _socket.io.emit("refuse");
+            if (action.type === _gameActions.ACTION_REFUSE) _socket.io.emit("refuse");
 
-      return result;
+            return result;
+        };
     };
-  };
 }
 
 },{"../actions/gameActions.js":1,"../api/socket.js":2}],14:[function(require,module,exports){
@@ -22209,50 +22209,50 @@ module.exports = function symbolObservablePonyfill(root) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _gameActions = require('../actions/gameActions.js');
 
 var initialState = {
-	turn: false,
-	points: 0,
-	extraPoints: 0,
-	deck: 0,
-	hand: [],
-	table: [],
-	log: [],
-	stack: [],
-	players: [],
-	proposal: [null, []]
+    turn: false,
+    points: 0,
+    extraPoints: 0,
+    deck: 0,
+    hand: [],
+    table: [],
+    log: [],
+    stack: [],
+    players: [],
+    proposal: [null, []]
 };
 
 function gameReducer(state, action) {
-	switch (action.type) {
-		case _gameActions.ACTION_DATA:
-			var newState = action.payload;
-			return newState;
-		case _gameActions.ACTION_SELECT_HAND:
-			var newState = Object.assign({}, state);
-			if (state.proposal[0] === action.card) newState.proposal[0] = null;else newState.proposal[0] = action.card;
-			return newState;
+    switch (action.type) {
+        case _gameActions.ACTION_DATA:
+            var newState = action.payload;
+            return newState;
+        case _gameActions.ACTION_SELECT_HAND:
+            var newState = Object.assign({}, state);
+            if (state.proposal[0] === action.card) newState.proposal[0] = null;else newState.proposal[0] = action.card;
+            return newState;
 
-		case _gameActions.ACTION_SELECT_TABLE:
-			var newState = Object.assign({}, state);
-			var idx = state.proposal[1].indexOf(action.card);
-			if (idx !== -1) newState.proposal[1].splice(idx, 1);else newState.proposal[1].push(action.card);
-			return newState;
+        case _gameActions.ACTION_SELECT_TABLE:
+            var newState = Object.assign({}, state);
+            var idx = state.proposal[1].indexOf(action.card);
+            if (idx !== -1) newState.proposal[1].splice(idx, 1);else newState.proposal[1].push(action.card);
+            return newState;
 
-		default:
-			return state;
-	}
+        default:
+            return state;
+    }
 }
 
 function gameApp() {
-	var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	var action = arguments[1];
+    var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+    var action = arguments[1];
 
-	return gameReducer(state, action);
+    return gameReducer(state, action);
 }
 
 exports.default = gameApp;
