@@ -1,4 +1,5 @@
 import {ACTION_DATA, ACTION_MESSAGE, ACTION_JOIN, ACTION_PLAY, ACTION_CONFIRM, ACTION_REJECT, ACTION_REFUSE, ACTION_ACCEPT, ACTION_SELECT_HAND, ACTION_SELECT_TABLE} from '../actions/gameActions.js';
+import "babel-polyfill";
 
 let initialState = {
     turn: false,
