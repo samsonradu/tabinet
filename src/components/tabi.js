@@ -1,8 +1,11 @@
 "use strict";
+let EventEmitter = require('events');
 
-class Tabi {
+class Tabi extends EventEmitter{
 
     constructor(){
+
+        super();
 
         this.runner = null;
 
@@ -19,6 +22,8 @@ class Tabi {
         this.proposal = [null, []];
 
         var self = this;
+
+        //debugging
         setInterval(function(){
             self.print();
         }, 10000);
@@ -94,12 +99,15 @@ class Tabi {
             this.update();
         }).bind(this));
 
-        player.on('accept', function(){
+        player.on('accept', (function(){
             player.acceptFlag = true;
-        })
-        player.on('refuse', function(){
+            this.deal();
+        }).bind(this));
+
+        player.on('refuse', (function(){
             player.acceptFlag = false;
-        })
+            this.deal()
+        }).bind(this));
 
         this.update();
         if (this.players.length === 2){
@@ -193,20 +201,22 @@ class Tabi {
         });
     }
 
+    shuffle(arr){
+        for (var i = arr.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        return arr;
+    }
+
+
     run(){
         console.log('Running new game ..');
-        function shuffle(arr) {
-            for (var i = arr.length - 1; i > 0; i--) {
-                var j = Math.floor(Math.random() * (i + 1));
-                var temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-            return arr;
-        }
-
+        
         var cards = require("./deck.js");
-        this.deck = shuffle(cards.slice(0));
+        this.deck = this.shuffle(cards.slice(0));
         this.table = [];
         this.proposal = [null, []];
 
@@ -216,25 +226,16 @@ class Tabi {
             player.acceptFlag = null;
             player.extraPoints = 0;
         });
+
+        if ((self.deck.length === 48 && self.players[0].acceptFlag !== null) || (self.players[0].hand.length === 0 && self.players[1].hand.length === 0)){
+            console.log("Dealing new cards ..");
+            if (!self.deal()){
+                console.log("Game over! Starting new game .. ");
+                self.players = [self.players[1], self.players[0]];
+            }
+        }
+
         this.update();
-
-        clearInterval(this.runner);
-
-        this.runner = setInterval(function(){
-            if (self.players.length === 2){
-                if ((self.deck.length === 48 && self.players[0].acceptFlag !== null) || (self.players[0].hand.length === 0 && self.players[1].hand.length === 0)){
-                    console.log("Dealing new cards ..");
-                    if (!self.deal()){
-                        console.log("Game over! Starting new game .. ");
-                        self.players = [self.players[1], self.players[0]];
-                        self.run();
-                    }
-                }
-            }
-            else {
-                //waiting for players...
-            }
-        }, 100);
     }
 }
 
