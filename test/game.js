@@ -9,31 +9,31 @@ const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 
 describe('async actions', () => {
-	it('should send message', () => {
-		const expectedAction = {
-			type: actions.ACTION_MESSAGE,
-			data: 'hello world'
-		}
-		
-		const store = mockStore(gameReducer)
+    it('should send message', () => {
+        const expectedAction = {
+            type: actions.ACTION_MESSAGE,
+            data: 'hello world'
+        }
+
+        const store = mockStore(gameReducer)
         store.dispatch(actions.sendMessage('hello world'))
         expect(store.getActions()).toEqual([expectedAction])
-	});
+    });
 });
 
 
 
 describe('reducer', () => {
-	it('should select hand card', () => {
-		let initialState = {
-			proposal: [null, []]
-		}
+    it('should select hand card', () => {
+        let initialState = {
+            proposal: [null, []]
+        }
 
-		let finalState = gameReducer(initialState, {
-			type: actions.ACTION_SELECT_HAND,
-			card: 'AH'
-		})
+        let finalState = gameReducer(initialState, {
+            type: actions.ACTION_SELECT_HAND,
+            card: 'AH'
+        })
 
-		expect(finalState.proposal[0]).toEqual('AH')
-	});
+        expect(finalState.proposal[0]).toEqual('AH')
+    });
 });
