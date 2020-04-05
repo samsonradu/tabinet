@@ -23,7 +23,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify -t [ babelify --presets [ es2015 react ] ] app.js -o bundle.js"
   },
   "author": "",
   "license": "ISC"
