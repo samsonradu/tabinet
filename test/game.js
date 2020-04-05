@@ -1,9 +1,9 @@
 import expect from 'expect';
-import * as actions from '../html/js/actions/gameActions.js';
+import * as actions from '../web/js/actions/gameActions.js';
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import nock from 'nock'
-import gameReducer from '../html/js/reducers/gameReducer.js';
+import gameReducer from '../web/js/reducers/gameReducer.js';
 
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
